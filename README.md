@@ -1,5 +1,6 @@
-###The Rozetka e-catalog parser  
-The program has been written for a test task. (See (../blob/master/test_task_php.zip) for the task specification.)  
+##E-catalog Parser  
+=======
+The program has been written for a test task. (See [../blob/master/test_task_php.zip] for the task specification.)  
 The intention of the present project is to meet asking requirements and display my skills while keeping it simple.  
 
 ________________________________________________________________________________
@@ -9,6 +10,7 @@ This is a webscraping script which fetches data from the e-catalog in response t
 
 #####ARCHITECTURE
 This project is designed in a modular, flexible and extensible way based on the object-oriented approach. Principles of OOD are adhered to as far as it's reasonable for such a task.  
+
    ****It's not about how an OO design should be made the best way: There are no full-blown abstract layers worked up. Therefore, extension of the program may demand modification of its components. I also have implemented some specific solutions which are more effective than routine ones. Albeit, it makes further re-use of code difficult.  
 
 #####ALGORITHM
@@ -19,8 +21,8 @@ When analyzing user's query, the script tries to guess what goods are being look
    - Parse all items from it.
 
 #####REQUIREMENTS
-PHP >= 5.3 (CLI), MySQL >= 5, Apache.
-PDO_MYSQL, CURL extensions.
+PHP >= 5.3 (CLI), MySQL >= 5, Apache.  
+PDO_MYSQL, CURL extensions.  
 
 #####HOW TO USE
 1. Customize settings in the 'config.php'. Set your actual database connection values. Set the other options if needed.
@@ -37,15 +39,15 @@ _____________________________________________________________________________
 
 
 Enhancements I am working on:
- a more intelligent category determination algorithm;
- performance optimization;
- enabling exception handling;
+ - a more intelligent category determination algorithm;
+ - performance optimization;
+ - enabling exception handling;
   ...  
 
 
 If you have some suggestions or you need more information please contact me by email.  
-
-
+  
+  
   Best Regards,  
   Vitali Makovijchuk  
   <vitalijob@ukr.net>
