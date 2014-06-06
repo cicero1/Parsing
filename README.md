@@ -1,5 +1,5 @@
-###The Rozetka e-catalog parser.  
-The program has been written for a test task. (See (../VMParsing/test_task.zip) for the task specification.)  
+###The Rozetka e-catalog parser  
+The program has been written for a test task. (See (../blob/master/test_task_php.zip) for the task specification.)  
 The intention of the present project is to meet asking requirements and display my skills while keeping it simple.  
 
 ________________________________________________________________________________
@@ -27,9 +27,9 @@ PDO_MYSQL, CURL extensions.
 2. Execute the 'e_catalog_parser.sql' file.
 3. Run 'parser.php' via the CLI. Pass query string as a parameter. It has to be a common noun or noun phrase (in Russian), a kind of goods you are seeking for. Try to make it unambiguous and as specific as possible.  
 E.g. instead of  
-    	*'камера'*, *'память'*, *'сумка'*,  
+    	`камера`, `память`, `сумка`,  
 it should be  
-    	*'веб-камера'*, *'оперативная память'*, *'сумка для ноутбука'*.  
+    	`веб-камера`, `оперативная память`, `сумка для ноутбука`.  
 The length of string has to be less than 30 characters and 5 words.
 4. If you get 'no such items available' - try to alter your query.
 
