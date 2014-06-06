@@ -1,23 +1,23 @@
 <?php
-
 /**
  * CatalogDataAccess
  *
  * @author Vitali Makovijchuk
- * @package E-Catalog-Parser
+ * @package VMParsing
  */
-class Catalog_Data_Access {
+namespace VMParsing;
+class CatalogDataAccess {
 
     /**
      * @staticvar PDO The database connection object.
      */
-    protected static $PDO;
+    protected static $pdo;
 
     function __construct() {
-        self::$PDO = new PDO(DB_DSN, DB_USER, DB_PASS);
+        self::$pdo = new \PDO(DB_DSN, DB_USER, DB_PASS);
 //        $this->initializeDbase();
 //        self::$PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        self::$PDO->exec('SET NAMES utf8');
+        self::$pdo->exec('SET NAMES utf8');
     }
 
     /**
@@ -60,25 +60,39 @@ class Catalog_Data_Access {
      * @param array $itemset items have been parsed passed in as 2d array
      */
     function save($query, $data, $name = null, $itemset = array()) {
-        self::$PDO->exec("INSERT INTO `parsing_acts`
+        self::$pdo->exec("INSERT INTO `parsing_acts`
             VALUES ( NULL, '$query', '$data', current_date());");
-        $id = self::$PDO->lastInsertId();
-        $stm = self::$PDO->prepare('INSERT INTO `parsed_items`
+        $id = self::$pdo->lastInsertId();
+        $stm = self::$pdo->prepare('INSERT INTO `parsed_items`
             (name, model, price, description_url, parsing_id)
             VALUES (?, ?, ?, ?, ?);');
         foreach ($itemset as $item)
             $stm->execute(array($name, $item['model'], $item['price'], $item['description_url'], $id));
     }
-
+    /**
+     * Makes up a filename for a csv file
+     *
+     * @param string $query
+     * @return string
+     */
+    private function getFileName($query)
+    {
+        $name = CSV_DIR.mb_convert_encoding(trim($query), OUTPUT_ENCODING).date(' d.m.y H-i-s');
+        // if there is already such a file append a number
+        $num = '';
+        for($i=1; file_exists($name.$num.'.csv'); $i++)
+            $num = sprintf('(%02d)',$i);
+        return $name.$num.'.csv';
+    }
     /**
      * exportCsv
      *
      * Creates the .csv file containing items have been obtained during the last successful parsing.
      * Items are ordered by price value.
      */
-    function exportCsv($filename) {
-        self::$PDO->exec("SELECT `name` , `model` , `price` , `description_url`
-        INTO OUTFILE '$filename'
+    function exportCsv($query) {
+        self::$pdo->exec("SELECT `name` , `model` , `price` , `description_url`
+        INTO OUTFILE '".$this->getFileName($query)."'
         CHARACTER SET ".OUTPUT_ENCODING."
         FIELDS TERMINATED BY ';'
         LINES TERMINATED BY '\n'
@@ -88,7 +102,7 @@ class Catalog_Data_Access {
         ORDER BY `price`");
     }
 
-    //TODO
-    function getItem() {}
-    function dropOutdated() {}
+
+    function getItem() {}  //TODO
+    function dropOutdated() {} //TODO
 }

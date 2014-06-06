@@ -6,10 +6,10 @@
  * it with the help of regular expressions; eventually, retrieves needed
  * data from it.
  * @author Vitali Makovijchuk
- * @package E-Catalog-Parser
+ * @package VMParsing
  */
-
-abstract class Content_Puller
+namespace VMParsing;
+abstract class ContentPuller
 {
     protected $_page_html;
     protected $request;
@@ -36,7 +36,7 @@ abstract class Content_Puller
      */
     protected function getPage($url)
     {
-        $ch=curl_init($url);
+        $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 20);
@@ -79,8 +79,8 @@ abstract class Content_Puller
         return $out;
     }
 
-//    protected function fetchElements($pattern, $number, $offset){}// TODO
-//    protected function finishFetching(); // TODO
+//    protected function fetchElement($pattern){} // TODO
+//    protected function fetchVector($pattern, $number, $offset) // TODO
 }
 
 /**
@@ -90,7 +90,7 @@ abstract class Content_Puller
  * structure and implements the logic of data pulling.
  * @author Vitali Makovijchuk
  */
-class Rozetka_Content_Puller extends Content_Puller
+class RozetkaContentPuller extends ContentPuller
 {
     protected $categories = array();          // categories of the e-catalog as sets of their descriptions
     protected $s_category = array();          // sought category
@@ -107,15 +107,13 @@ const RE_CATEGORY_QTY   = '#QuantityTotal\":\"(?<total>\d+).*?:\"(?<available>\d
 const RE_PAGINATION     = '#>(?<pages_number>\d+)<\/a[^a]*?<\/ul#s';
 const RE_CATEGORY_ITEMS = '#st-title.*?ref=\"(?<description_url>[^\"]*?)\".*?>(?<model>.*?)\v.*?-status (?:available|limited)\".*?-uah\">(?<price>.*?)<#s';
 
-
     function __construct()
     {
         parent::__constructor();
     }
 
-
     /**
-     * gets Rozetka's category of products name previously determined with pullItemsOnRequest()
+     * Retrieves Rozetka's category of products name previously determined
      *
      * @return string a category of goods name as it is recorded in the e-catalog
      */
@@ -156,7 +154,6 @@ const RE_CATEGORY_ITEMS = '#st-title.*?ref=\"(?<description_url>[^\"]*?)\".*?>(?
         return $this->parseItemsFromCategory($this->s_category);
     }
 
-
     /**
      * Determines the most relevant category of goods to user query
      *
@@ -170,11 +167,10 @@ const RE_CATEGORY_ITEMS = '#st-title.*?ref=\"(?<description_url>[^\"]*?)\".*?>(?
         return $this->getMaxRelevanceCategory();
     }
 
-
     /**
      * ParseCategories
      *
-     * This method operates with a search result page. Parses information about categories
+     * This method operates with a search result page. It parses information about categories
      * of goods from the page navigation menu into such parts: a category name, a number of
      * finding in the category and a url to the search-in-thе-category page.
      * Lists them to the associative array $this->categories.
@@ -188,7 +184,6 @@ const RE_CATEGORY_ITEMS = '#st-title.*?ref=\"(?<description_url>[^\"]*?)\".*?>(?
         $this->categories = $this->fetchElementsFromPage($search_url, self::RE_SEARCH_CATEGORIES);
         return $this->categories;
     }
-
 
     /**
      * Evaluates relevance of categories to the search query and returns the one
@@ -222,7 +217,6 @@ const RE_CATEGORY_ITEMS = '#st-title.*?ref=\"(?<description_url>[^\"]*?)\".*?>(?
                 $max_relevance_category = $c;
         return $max_relevance_category;
     }
-
 
     /**
      * Parses items of goods from a given category
