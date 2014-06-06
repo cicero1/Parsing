@@ -1,7 +1,7 @@
 ##E-catalog Parser  
 
 
-The program has been written for a test task. ((See test_task)[../blob/master/test_task_php.zip] for the task specification.)  
+The program has been written for a test task. (See [test_task.zip](../blob/master/test_task_php.zip) for the task specification.)
 The intention of the present project is to meet asking requirements and display my skills while keeping it simple.  
 
 ________________________________________________________________________________
@@ -43,7 +43,7 @@ Enhancements I am working on:
  - a more intelligent category determination algorithm;
  - performance optimization;
  - enabling exception handling;
-  ...  
+ - ...  
 
 
 If you have some suggestions or you need more information please contact me by email.  
