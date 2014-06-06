@@ -1,6 +1,7 @@
 ##E-catalog Parser  
-=======
-The program has been written for a test task. (See [../blob/master/test_task_php.zip] for the task specification.)  
+
+
+The program has been written for a test task. ((See test_task)[../blob/master/test_task_php.zip] for the task specification.)  
 The intention of the present project is to meet asking requirements and display my skills while keeping it simple.  
 
 ________________________________________________________________________________
