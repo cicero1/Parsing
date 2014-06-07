@@ -3,7 +3,7 @@
 
 The program has been written for a test task. (See [test_task.zip](../master/test_task_php.zip) for the task specification.)
 
-The intention of the present project is to meet asking requirements and display my skills while keeping it simple.  
+The intention of the present project is to meet asking requirements and display my skills while keeping it simple.
 
 ________________________________________________________________________________
 
