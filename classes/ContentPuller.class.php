@@ -92,7 +92,7 @@ abstract class ContentPuller
  */
 class RozetkaContentPuller extends ContentPuller
 {
-    protected $categories = array();          // categories of the e-catalog as sets of their descriptions
+    protected $categories = array();          // categories of goods from the e-catalog as sets of their descriptions
     protected $s_category = array();          // sought category
     protected $items      = array();          // items of goods parsed
 
@@ -113,7 +113,7 @@ const RE_CATEGORY_ITEMS = '#st-title.*?ref=\"(?<description_url>[^\"]*?)\".*?>(?
     }
 
     /**
-     * Retrieves Rozetka's category of products name previously determined
+     * Retrieves Rozetka's category of products name determined with detectCategory()
      *
      * @return string a category of goods name as it is recorded in the e-catalog
      */
@@ -155,7 +155,7 @@ const RE_CATEGORY_ITEMS = '#st-title.*?ref=\"(?<description_url>[^\"]*?)\".*?>(?
     }
 
     /**
-     * Determines the most relevant category of goods to user query
+     * Determines the most relevant to user query category of goods
      *
      * @param string $request user query
      * @return array $category
