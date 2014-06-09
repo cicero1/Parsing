@@ -155,7 +155,7 @@ const RE_CATEGORY_ITEMS = '#st-title.*?ref=\"(?<description_url>[^\"]*?)\".*?>(?
     }
 
     /**
-     * Determines the most relevant to user query category of goods
+     * Determines the most relevant category of goods
      *
      * @param string $request user query
      * @return array $category
@@ -187,8 +187,8 @@ const RE_CATEGORY_ITEMS = '#st-title.*?ref=\"(?<description_url>[^\"]*?)\".*?>(?
 
     /**
      * Evaluates relevance of categories to the search query and returns the one
-     * with the max value. The category relevance is rated in this way:
-     * relevance = number_of_finding_in_the_category/total_items_number;
+     * with the max value. A category relevance is rated in this way:
+     * relevance = number_of_findings_in_the_category/total_items_number;
      *
      * @return array $category
      */
