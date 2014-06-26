@@ -200,7 +200,7 @@ const RE_CATEGORY_ITEMS = '#st-title.*?ref=\"(?<description_url>[^\"]*?)\".*?>(?
 
         foreach($this->categories as &$c)
         {
-            // to get quantity values we need first to go to search-in-category and category-root pages
+            // to access quantity values we need first to go to search-in-category and category-root pages
             $c += $this->fetchElementsFromPage($c['search_url'], self::RE_ROOT_URL);
             $c += $this->fetchElementsFromPage($c['root_url'], self::RE_CATEGORY_QTY) ?:    // bypass Rozetka's irregularity
                   $this->fetchElementsFromPage($c['root_url'] .= 'filter/', self::RE_CATEGORY_QTY);
