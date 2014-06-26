@@ -50,5 +50,5 @@ Enhancements I am working on:
 If you have some suggestions or you need more information please contact me by email.  
   
   
-  Best Regards, Vitali
-  <vitalijob@ukr.net>
+  Best Regards, Vitali  
+  <vitalijob@ukr.net>  
