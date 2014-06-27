@@ -222,14 +222,14 @@ const RE_CATEGORY_ITEMS = '#st-title.*?ref=\"(?<description_url>[^\"]*?)\".*?>(?
      * Parses items of goods from a given category
      *
      * @param array $category
-     * @return array $items 2d array of parsed items
+     * @return array $items a 2d array of parsed items
      */
     protected function parseItemsFromCategory($category)
     {
         if(!($category && isset($category['root_url'])))
             return false;
 
-        // determine the number of pages in category
+        // determine the number of pages in a category
         $pagination = $this->fetchElementsFromPage($category['root_url'].'view=list/', self::RE_PAGINATION);
         $pages_number = ($pagination['pages_number']) ? (int)$pagination['pages_number'] : 1;
 
