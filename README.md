@@ -8,7 +8,7 @@ The primary purpose of the project is to meet asking requirements and display my
 _________________________________________________________________________________
 
 ####ABOUT
-This is a webscraping script which fetches data from the e-catalog in response to user's query, analyzes and parses it. The results are stored in the database and the CVS file.
+This is a webscraping script which fetches data from the e-catalog in response to a user's query, analyzes and parses it. The results are stored in the database and the CVS file.
 
 ####ARCHITECTURE
 This project is designed in a modular, flexible and extensible way based on the object-oriented approach. Principles of OOD are adhered to as far as it's reasonable for such a task.  
